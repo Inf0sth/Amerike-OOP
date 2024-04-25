@@ -1,2 +1,2 @@
 # Amerike-OOP
-Provicional repository for Object oriented programing
+Repository for Object oriented programing
