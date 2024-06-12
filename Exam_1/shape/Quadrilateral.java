@@ -4,14 +4,8 @@ public class Quadrilateral implements Shape_Interface{
     double area;
     double perimeter;
 
-    public double calAreaCuad(double l){
-        double area = l*l;
-        this.area = area;
-        return area;
-    }
-
-    public double calAreaRect(double base, double altura){
-        double area = base*altura;
+    public double calArea(double bass_m, double bass_M, double h){
+        double area = ((bass_M + bass_m)*h)/2;
         this.area = area;
         return area;
     }
@@ -21,15 +15,9 @@ public class Quadrilateral implements Shape_Interface{
         return this.area;
     }
 
-    public double calPerCuad(double l){
-        double perimeter = l*4;
+    public double calPer(double l1, double l2, double l3, double l4){
+        double perimeter = l1+l2+l3+l4;
         this.perimeter = perimeter;
-        return perimeter;
-    }
-
-    public double calPerRect(double base, double altura){
-        double perimeter = (base*altura)/2;
-        this.perimeter =  perimeter;
         return perimeter;
     }
 
