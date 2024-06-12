@@ -1,9 +1,10 @@
-public class Ellipse implements Shape_Interface{
+package shape;
+public class Triangle implements Shape_Interface{
     double area;
     double perimeter;
-    
-    public double calArea(double radY, double radX){
-        double area = radY * radX * 3.141592;
+
+    public double calArea(double altura, double base){
+        double area = (base*altura)/2;
         this.area = area;
         return area;
     }
@@ -13,8 +14,8 @@ public class Ellipse implements Shape_Interface{
         return this.area;
     }
 
-    public double calPerimeter(double radY, double radX){
-        double perimeter = 3.141592 * (radX + radY);
+    public double calPerimeter(double a, double b, double c){
+        double perimeter = a + b + c;
         this.perimeter = perimeter;
         return perimeter;
     }
@@ -22,7 +23,6 @@ public class Ellipse implements Shape_Interface{
     @Override
     public double getPerimeter() {
         return this.perimeter;
-    };
-
-
+    }
+    
 }

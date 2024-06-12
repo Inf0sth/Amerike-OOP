@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import shape.Ellipse;
+import shape.Quadrilateral;
+import shape.Triangle;
 
 public class main {
     public static void main(String[] args) {
