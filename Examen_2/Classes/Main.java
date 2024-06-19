@@ -1,16 +1,11 @@
 package Examen_2.Classes;
 
 import java.util.Scanner;
-import Examen_2.Classes.User;
-import Examen_2.Classes.Letter;
-import Examen_2.Classes.Package;
-import Examen_2.Classes.MailItem;
-import Examen_2.Classes.UserException;
 import Examen_2.Enums.DistributionPoints;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UserException {
         Scanner scanner = new Scanner(System.in);
 
         // Collect sender's information
@@ -76,7 +71,7 @@ public class Main {
             } else {
                 System.out.println("Invalid input. Please enter 'letter' or 'package'.");
             }
-        } catch (UserException | NumberFormatException e) {
+        } catch (NumberFormatException e) {
             System.out.println("Error: " + e.getMessage());
         } finally {
             scanner.close();
@@ -120,11 +115,14 @@ public class Main {
 
     // Method to display package details (arrival time and estimated cost)
     private static void displayPackageDetails(Package packageItem) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("\nPackage details:");
         System.out.println("Sender: " + packageItem.getSender().getFullName());
         System.out.println("Recipient: " + packageItem.getRecipient().getFullName());
         System.out.println("Estimated arrival time: " + packageItem.getEstimateArrival());
-        System.out.println("Estimated cost: $" + packageItem.estimatePrice());
+        System.out.print("Address destination: ");
+        String Address_dest = scanner.nextLine();
+        System.out.println("Estimated cost: $" + packageItem.estimatePrice(Address_dest));
     }
 }
 
