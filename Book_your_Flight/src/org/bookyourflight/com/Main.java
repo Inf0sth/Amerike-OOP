@@ -7,21 +7,25 @@ import org.bookyourflight.flights.Destination;
 import org.bookyourflight.flights.DomesticFlight;
 import org.bookyourflight.flights.FlightException;
 import org.bookyourflight.flights.Ticket;
+import org.bookyourflight.user.User;
+import org.bookyourflight.user.UserException;
+import org.bookyourflight.util.Utilities;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		try { 
-			DomesticFlight f = (DomesticFlight) new DomesticFlight(Destination.UK, Destination.MX)
-					.setId("RE-4346")
-					.setDepartueGate("A-04")
-					.setDepatureDate(LocalDateTime.now());
-		} catch(FlightException ex) {
-			System.out.println("An exception has acurred " + ex.getMessage());
-		} finally {
+		/*try {
+			String B = AbstractFlight.nextLetter("C");
+			System.out.println(B);
+		}  finally {
 			System.out.println(" This is happening no matter what");
-		}
+		}*/
+		
+		/*if (Utilities.matchRegex(regex, "javier@gmail.com")) {
+			System.out.println("Invalid user name, characters and numbers unavalible");
+		}*/
+		System.out.println(Utilities.matchRegex("\\+52\\d{10}", "+525512349978"));
 		
 		// TODO Auto-generated method stub
 		//System.out.println(ex);

@@ -1,6 +1,7 @@
 package org.bookyourflight.flights;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public interface FlightInterface {
@@ -20,4 +21,6 @@ public interface FlightInterface {
 	public double calculateDuration();
 	public double calculateTicketPrice();
 	public void getLuggageAllowance();
+	public ZonedDateTime getFlightTime();
+	public void setFlightTime(ZonedDateTime flightTime);
 }

@@ -1,11 +1,16 @@
 package org.bookyourflight.flights;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.bookyourflight.util.Utilities;
 
 public abstract class AbstractFlight implements FlightInterface {
 	// Flight parameters
@@ -18,6 +23,7 @@ public abstract class AbstractFlight implements FlightInterface {
 	private Destination Destination;
 	private final String FlightRegex;
 	private final String GateRegex;
+	private ZonedDateTime FlightTime;
 	
 	// Constructor for the abstract class
 	public AbstractFlight(Destination org, Destination dest, String fligthRegex, String gateRegex) {
@@ -38,12 +44,8 @@ public abstract class AbstractFlight implements FlightInterface {
 	 * */
 	@Override
 	public AbstractFlight setId(String id) throws FlightException {
-		// Creates the string pattern from the regex
-		Pattern pattern = Pattern.compile(this.FlightRegex);
-		// Create the matcher object
-		Matcher matcher = pattern.matcher(id);
 		// Find the regex in the string
-		if(matcher.find()) {
+		if(Utilities.matchRegex(this.FlightRegex, id)) {
 			this.Id = id;
 		} else {
 			throw new FlightException("Id is not a valid flight id");
@@ -106,5 +108,26 @@ public abstract class AbstractFlight implements FlightInterface {
 	@Override
 	public boolean isInternational() {
 		return this.Origin.getRegion().equals(Destination.getRegion());
+	}
+	
+	/**
+	 * Increases the given letter by 1 so if
+	 * "A" 
+	 * A -> B
+	 * */
+	public static String nextLetter(String letter) {
+	      int charValue = letter.charAt(0);
+	      String next = String.valueOf( (char) (charValue + 1));
+	      return next;
+	}
+
+	public ZonedDateTime getFlightTime() {
+		return FlightTime;
+	}
+
+	public void setFlightTime(int [] dateArray) {
+		//{2012, 3, 5, 10, 15, 30, 00}
+		ZonedDateTime flightTime = ZonedDateTime.of(dateArray[0], dateArray[1], dateArray[2],dateArray[4], dateArray[5], dateArray[6], dateArray[7], ZoneId.systemDefault());
+		this.FlightTime = flightTime;
 	}
 }

@@ -21,14 +21,13 @@ public class DomesticFlight extends AbstractFlight {
 		char[] lastRow =  {'|','-','|','1','2','3','|',' ','|','4','5','6','|'};
 		// Iterate throw the number of rows and append them to the flight map
 		for(int i=0; i<numRows; i++) {
-			
+			if(i == 0) {
+				map.add(firstRow);
+			} else {
+				AbstractFlight.nextLetter(String.valueOf(firstRow[1]));
+				//char[] newRor = 
+			}
 		}
-	}
-	
-	// Define a function that increases the letter by 1 from A -> B and so on
-	private char increaseLetter(String letter) {
-		String val  = String.valueOf(letter.charAt(0));
-		(char) String.valueOf(val + 1);
 	}
 	
 	@Override
@@ -49,14 +48,20 @@ public class DomesticFlight extends AbstractFlight {
 		
 	}
 
-	@Override
-	public Ticket getTicket() {
+	
+	public Ticket getTicket(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Ticket assignTicket() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ticket getTicket() {
 		// TODO Auto-generated method stub
 		return null;
 	}
